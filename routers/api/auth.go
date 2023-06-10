@@ -17,10 +17,11 @@ type auth struct {
 	Password string `valid:"Required; MaxSize(50)"`
 }
 
+//這一步設定在router指定先跑一個GET接口取得auth
 func GetAuth(c *gin.Context) {
 	username := c.Query("username")
 	password := c.Query("password")
-
+  
 	valid := validation.Validation{}
 	a := auth{Username: username, Password: password}
 	ok, _ := valid.Valid(&a)
@@ -28,6 +29,7 @@ func GetAuth(c *gin.Context) {
 	data := make(map[string]interface{})
 	code := e.INVALID_PARAMS
 	if ok {
+		//進db去撈取資料使用CheckAuth這個方法
 		isExist := models.CheckAuth(username, password)
 		if isExist {
 			token, err := util.GenerateToken(username, password)

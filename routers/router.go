@@ -24,6 +24,7 @@ func InitRouter() *gin.Engine {
 		apiv1.GET("/tags", v1.GetTags)
 		//新建标签
 		apiv1.POST("/tags", v1.AddTag)
+
 		//更新指定标签
 		apiv1.PUT("/tags/:id", v1.EditTag)
 		//删除指定标签
@@ -39,8 +40,11 @@ func InitRouter() *gin.Engine {
 		//删除指定文章
 		apiv1.DELETE("/articles/:id", v1.DeleteArticle)
 
+		//新增帳號
+		apiv1.POST("/adduser", v1.AddUser)
+
 		//修改密碼
-		apiv1.POST("/user/editor", v1.EditorAccount)
+		//apiv1.POST("/user/editor", v1.EditorAccount)
 	}
 
 	return r

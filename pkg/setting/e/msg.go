@@ -13,6 +13,8 @@ var MsgFlags = map[int]string{
 	ERROR_AUTH:                     "Token错误",
 	INVALID_REQUEST:                "請求失效",
 	Password_format_error:          "密碼格式錯誤",
+	ERROR_PLAYER_EXISTS:            "玩家已存在",
+	ERROR_PASSWORD:                 "密碼錯誤",
 }
 
 func GetMsg(code int) string {

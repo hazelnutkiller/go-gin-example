@@ -18,6 +18,7 @@ type Claims struct {
 	jwt.StandardClaims        //通过 StandardClaims 生成标准的载体
 }
 
+//傳進player生成token
 func GenerateToken(username, password string) (string, error) {
 	nowTime := time.Now()
 	//設定3小時過期
